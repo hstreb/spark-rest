@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '1.0'
+
+mainClassName = "org.sample.People"
+
+jar {
+  from({configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }}) {
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+  }
+
+  manifest {
+    attributes 'Main-Class': mainClassName
+  }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.sparkjava:spark-core:2.2'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'log4j:log4j:1.2.17'
+
+    testCompile 'junit:junit:4.12'
+}
+
+test {
+    testLogging {
+      events "passed", "skipped", "failed", "standardOut", "standardError"
+      afterSuite { desc, result ->
+      if (!desc.parent) {
+        println "Results: ${result.resultType} (Total: ${result.testCount}, Passed: ${result.successfulTestCount}, Failed: ${result.failedTestCount}, Skipped: ${result.skippedTestCount})"
+      }
+    }
+    }
+}
