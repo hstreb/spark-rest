@@ -3,6 +3,7 @@ package org.sample;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class PersonService {
 	private Map<Integer, Person> people = new HashMap<Integer, Person>();
@@ -12,6 +13,10 @@ public class PersonService {
 		person.setId(id);
 		people.put(person.getId(), person);
 		return person;
+	}
+
+	public Optional<Person> find(Integer id) {
+		return people.values().stream().filter(p -> p.getId().equals(id)).findFirst();
 	}
 
 	public Collection<Person> list() {

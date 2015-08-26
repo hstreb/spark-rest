@@ -2,6 +2,9 @@ package org.sample;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
+
+import java.util.Optional;
+
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 import org.junit.Test;
@@ -13,6 +16,22 @@ public class PersonServiceTest {
 		PersonService service = new PersonService();
 		Person personInserted = service.add(new Person("Hommer Simpson", 41));
 		assertThat(personInserted.getId(), equalTo(1));
+	}
+
+	@Test
+	public void testFindForAnExistentId() {
+		PersonService service = new PersonService();
+		service.add(new Person("Hommer Simpson", 41));
+		Person personFound = service.find(1).get();
+		assertThat(personFound.getName(), equalTo("Hommer Simpson"));
+	}
+
+	@Test
+	public void testFindForAnInexistentIdReturnsEmpty() {
+		PersonService service = new PersonService();
+		service.add(new Person("Hommer Simpson", 41));
+		Optional<Person> personFound = service.find(2);
+		assertThat(personFound.isPresent(), equalTo(false));
 	}
 
 	@Test
