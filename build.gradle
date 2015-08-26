@@ -8,7 +8,7 @@ targetCompatibility = 1.8
 
 version = '1.0'
 
-mainClassName = "org.sample.People"
+mainClassName = "org.sample.App"
 
 jar {
 	from({configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }}) {
