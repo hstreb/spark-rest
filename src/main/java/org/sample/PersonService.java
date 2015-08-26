@@ -25,4 +25,12 @@ public class PersonService {
 		}
 		return false;
 	}
+
+	public Person update(Person person) {
+		if (people.containsKey(person.getId())) {
+			people.put(person.getId(), person);
+			return person;
+		}
+		return null;
+	}
 }

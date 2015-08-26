@@ -48,4 +48,22 @@ public class PersonServiceTest {
 		assertThat(service.list(), hasSize(0));
 	}
 
+	@Test
+	public void testUpdadeAnExistentPerson() {
+		PersonService service = new PersonService();
+		Person personAdded = service.add(new Person("Hommer Simpson", 41));
+		Person personToUpdate = new Person(personAdded.getId(), "Hommer Simpson", 42);
+		Person personUpdated = service.update(personToUpdate);
+		assertThat(personUpdated.getAge(), equalTo(personToUpdate.getAge()));
+	}
+
+	@Test
+	public void testUpdadeAnInexistentPersonReturnsNull() {
+		PersonService service = new PersonService();
+		service.add(new Person("Hommer Simpson", 41));
+		Person personToUpdate = new Person(2, "Hommer Simpson", 42);
+		Person personUpdated = service.update(personToUpdate);
+		assertThat(personUpdated, equalTo(null));
+	}
+
 }
