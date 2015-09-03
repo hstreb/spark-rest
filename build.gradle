@@ -11,6 +11,9 @@ version = '1.0'
 mainClassName = "org.sample.App"
 
 jar {
+
+	baseName = "spark-rest"
+
 	from({configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }}) {
 		exclude "META-INF/*.SF"
 		exclude "META-INF/*.DSA"
