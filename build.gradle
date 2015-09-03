@@ -53,3 +53,7 @@ test {
         classDumpFile = file("$buildDir/jacoco/classpathdumps")
     }
 }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.6'
+}
