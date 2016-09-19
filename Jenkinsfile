@@ -4,7 +4,7 @@ node {
       git 'https://github.com/hstreb/spark-rest.git'
    }
    stage('Compile') {
-      sh "./gradlew clean compile"
+      sh "./gradlew clean compileJava"
    }
    stage('Unit test') {
       sh "./gradlew test"
