@@ -1,3 +1,4 @@
+#!groovy
 node {
    stage('Preparation') {
       git 'https://github.com/hstreb/spark-rest'
