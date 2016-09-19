@@ -1,10 +1,16 @@
 #!groovy
 node {
    stage('Preparation') {
-      git 'https://github.com/hstreb/spark-rest'
+      git 'https://github.com/hstreb/spark-rest.git'
+   }
+   stage('Compile') {
+      sh "./gradlew clean compile"
+   }
+   stage('Unit test') {
+      sh "./gradlew test"
    }
    stage('Build') {
-      sh "./gradlew clean test installDist"
+      sh "./gradlew installDist"
    }
    stage('Results') {
       junit 'build/**/TEST-*.xml'
