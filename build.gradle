@@ -32,7 +32,8 @@ repositories {
 dependencies {
 	compile 'com.sparkjava:spark-core:2.2'
 	compile 'com.google.code.gson:gson:2.3.1'
-	compile 'log4j:log4j:1.2.17'
+	compile 'org.apache.logging.log4j:log4j-api:2.6.2'
+	compile 'org.apache.logging.log4j:log4j-core:2.6.2'
 
 	testCompile ('junit:junit:4.12') { transitive false }
 	testCompile ('org.hamcrest:java-hamcrest:2.0.0.0') { transitive false }
@@ -55,5 +56,5 @@ test {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.6'
+	gradleVersion = '3.1'
 }

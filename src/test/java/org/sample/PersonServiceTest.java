@@ -1,11 +1,10 @@
 package org.sample;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.core.IsEqual.equalTo;
 
 import java.util.Optional;
-
-import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 
 import org.junit.Test;
 
