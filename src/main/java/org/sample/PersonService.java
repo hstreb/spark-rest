@@ -1,14 +1,21 @@
 package org.sample;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 public class PersonService {
+
+	private static final Logger log = LogManager.getLogger(PersonService.class);
+
 	private Map<Integer, Person> people = new HashMap<Integer, Person>();
 
 	public Person add(Person person) {
+		log.info("Person to be inserted {}", person);
 		int id = people.keySet().stream().max(Integer::compare).orElse(0) + 1;
 		person.setId(id);
 		people.put(person.getId(), person);

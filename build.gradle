@@ -37,6 +37,7 @@ dependencies {
 
 	testCompile ('junit:junit:4.12') { transitive false }
 	testCompile ('org.hamcrest:java-hamcrest:2.0.0.0') { transitive false }
+	testCompile "org.mockito:mockito-core:1.+"
 }
 
 test {
