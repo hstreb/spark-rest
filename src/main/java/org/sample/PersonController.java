@@ -36,6 +36,7 @@ public class PersonController {
     }
 
     private Optional<Person> getPerson(Request request) {
+        if (request.params(":id") == null) return Optional.empty();
         Integer id = Integer.parseInt(request.params(":id"));
         return personService.find(id);
     }
