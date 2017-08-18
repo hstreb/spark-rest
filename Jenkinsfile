@@ -1,7 +1,7 @@
 #!groovy
 node {
    stage('Preparation') {
-      git 'https://github.com/hstreb/spark-rest.git'
+      checkout(scm)
    }
    stage('Compile') {
       sh "./gradlew clean compileJava"
